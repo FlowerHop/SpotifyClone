@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "137580987205",
+    "project_id": "spotifyclone-84206",
+    "storage_bucket": "spotifyclone-84206.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137580987205:android:ab1353ee0a158f4be5742c",
+        "android_client_info": {
+          "package_name": "com.flowerhop.spotifyclone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137580987205-jb8k2kv2juvehm6vjavo71pk9emlfq8h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmrRyTDk9FcVKmlrUbWN8pjsJYYzaN9L4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "137580987205-jb8k2kv2juvehm6vjavo71pk9emlfq8h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
