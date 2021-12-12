@@ -59,7 +59,7 @@ class FirebaseMusicSource @Inject constructor(
             .build()
 
         MediaBrowserCompat.MediaItem(desc, 0)
-    }
+    }.toMutableList()
 
     private val onReadyListeners = mutableListOf<(Boolean) -> Unit>()
     private var state: State = Created
