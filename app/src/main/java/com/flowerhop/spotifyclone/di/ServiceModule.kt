@@ -2,6 +2,7 @@ package com.flowerhop.spotifyclone.di
 
 import android.content.Context
 import com.flowerhop.spotifyclone.data.remote.MusicDatabase
+import com.flowerhop.spotifyclone.exoplayer.MusicServiceConnection
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.SimpleExoPlayer

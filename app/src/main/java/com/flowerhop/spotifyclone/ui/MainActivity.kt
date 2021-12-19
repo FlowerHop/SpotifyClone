@@ -1,9 +1,9 @@
-package com.flowerhop.spotifyclone
+package com.flowerhop.spotifyclone.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bumptech.glide.RequestManager
-import com.google.firebase.firestore.FirebaseFirestore
+import com.flowerhop.spotifyclone.R
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
