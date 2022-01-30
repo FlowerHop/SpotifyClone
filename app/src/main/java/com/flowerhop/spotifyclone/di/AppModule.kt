@@ -5,6 +5,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.flowerhop.spotifyclone.R
+import com.flowerhop.spotifyclone.adapters.SwipeSongAdapter
 import com.flowerhop.spotifyclone.exoplayer.MusicServiceConnection
 import dagger.Module
 import dagger.Provides
@@ -32,4 +33,7 @@ object AppModule {
             .error(R.drawable.ic_launcher_background)
             .diskCacheStrategy(DiskCacheStrategy.DATA)
     )
+
+    @Provides
+    fun provideSwipeSongAdapter() = SwipeSongAdapter()
 }
