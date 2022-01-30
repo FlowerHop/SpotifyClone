@@ -14,9 +14,10 @@ import com.flowerhop.spotifyclone.exoplayer.isPlayEnabled
 import com.flowerhop.spotifyclone.exoplayer.isPlaying
 import com.flowerhop.spotifyclone.exoplayer.isPrepared
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel constructor(
+class MainViewModel @Inject constructor(
     private val musicServiceConnection: MusicServiceConnection
 ) : ViewModel() {
 

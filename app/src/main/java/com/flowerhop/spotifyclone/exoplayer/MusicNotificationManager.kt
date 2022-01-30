@@ -33,6 +33,7 @@ class MusicNotificationManager(
             setMediaDescriptionAdapter(DescriptionAdapter(mediaController))
             setChannelNameResourceId(R.string.notification_channel_name)
             setChannelDescriptionResourceId(R.string.notification_channel_description)
+            setNotificationListener(notificationListener)
         }.build().apply {
             this.setSmallIcon(R.drawable.ic_launcher_foreground)
             this.setMediaSessionToken(sessionToken)

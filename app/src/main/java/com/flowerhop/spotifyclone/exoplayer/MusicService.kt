@@ -7,6 +7,7 @@ import android.support.v4.media.MediaBrowserCompat
 import android.support.v4.media.MediaDescriptionCompat
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
+import android.util.Log
 import androidx.media.MediaBrowserServiceCompat
 import com.flowerhop.spotifyclone.data.Constants.MEDIA_ROOT_ID
 import com.flowerhop.spotifyclone.data.Constants.NETWORK_ERROR
@@ -19,11 +20,9 @@ import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector
 import com.google.android.exoplayer2.ext.mediasession.TimelineQueueNavigator
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
+import dagger.hilt.android.internal.ThreadUtil
+import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.Main
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 private const val SERVICE_TAG = "MusicService"
@@ -38,7 +37,7 @@ class MusicService: MediaBrowserServiceCompat() {
     lateinit var exoPlayer: ExoPlayer
 
     @Inject
-    private lateinit var firebaseMusicSource: FirebaseMusicSource
+    lateinit var firebaseMusicSource: FirebaseMusicSource
 
     private lateinit var musicNotificationManager: MusicNotificationManager
 
@@ -111,10 +110,13 @@ class MusicService: MediaBrowserServiceCompat() {
         itemToPlay: MediaMetadataCompat?,
         playNow: Boolean
     ) {
-        val curSongIndex = if (currPlayingSong == null) 0 else songs.indexOf(itemToPlay)
-        exoPlayer.prepare(firebaseMusicSource.asMediaSource(dataSourceFactory))
-        exoPlayer.seekTo(curSongIndex, 0L)
-        exoPlayer.playWhenReady = playNow
+        CoroutineScope(Main).launch {
+            val curSongIndex = if (currPlayingSong == null) 0 else songs.indexOf(itemToPlay)
+            exoPlayer.setMediaSource(firebaseMusicSource.asMediaSource(dataSourceFactory))
+            exoPlayer.prepare()
+            exoPlayer.seekTo(curSongIndex, 0L)
+            exoPlayer.playWhenReady = playNow
+        }
     }
 
     override fun onTaskRemoved(rootIntent: Intent?) {

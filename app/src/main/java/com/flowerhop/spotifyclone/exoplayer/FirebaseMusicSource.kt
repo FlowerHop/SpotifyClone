@@ -3,6 +3,7 @@ package com.flowerhop.spotifyclone.exoplayer
 import android.support.v4.media.MediaBrowserCompat
 import android.support.v4.media.MediaDescriptionCompat
 import android.support.v4.media.MediaMetadataCompat
+import android.util.Log
 import androidx.core.net.toUri
 import com.flowerhop.spotifyclone.data.remote.MusicDatabase
 import com.flowerhop.spotifyclone.exoplayer.State.*
@@ -34,7 +35,6 @@ class FirebaseMusicSource @Inject constructor(
                 .putString(MediaMetadataCompat.METADATA_KEY_DISPLAY_DESCRIPTION, "Fake description")
                 .build()
         }
-
         state = Initialized
     }
 

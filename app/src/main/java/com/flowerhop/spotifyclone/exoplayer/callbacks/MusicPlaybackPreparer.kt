@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.ResultReceiver
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.PlaybackStateCompat
+import android.util.Log
 import com.flowerhop.spotifyclone.exoplayer.FirebaseMusicSource
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector
@@ -28,6 +29,7 @@ class MusicPlaybackPreparer (
 
     override fun onPrepareFromMediaId(mediaId: String, playWhenReady: Boolean, extras: Bundle?) {
         firebaseMusicSource.whenReady {
+            Log.e("Preparer", "onPrepareFromMediaId: ${firebaseMusicSource.songs}" )
             val itemToPlay = firebaseMusicSource.songs.find {
                 mediaId == it.description.mediaId
             }
